@@ -1,0 +1,28 @@
+import os
+import sys
+import compiler
+from icecream import ic
+
+# project root path
+PRO_ROOT = os.path.normpath(os.getcwd())
+
+TARGET = 'build/fmt_' + compiler.BOARD + '.' + compiler.TARGET_EXT
+ic(TARGET)
+
+env = Environment(tools=['mingw'],
+                  AS=compiler.AS, ASFLAGS=compiler.AFLAGS,
+                  CC=compiler.CC, CFLAGS=compiler.CFLAGS,
+                  AR=compiler.AR, ARFLAGS='-rc',
+                  CXX=compiler.CXX, CXXFLAGS=compiler.CXXFLAGS,
+                  LINK=compiler.LINK, LINKFLAGS=compiler.LFLAGS)
+
+#print(env.Dump())
+
+#ic(objs)
+#print env.get('CPPPATH', [''])
+#print(env.Dump())
+
+
+# make a building
+env.Program(TARGET, source='bar.c')
+DoBuilding(TARGET, objs)
