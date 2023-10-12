@@ -1,12 +1,14 @@
 import os
-import sys
+# import sys
 import compiler
 from icecream import ic
+
+# print("Shell is", os.environ['SHELL'])
 
 # project root path
 PRO_ROOT = os.path.normpath(os.getcwd())
 
-TARGET = 'build/fmt_' + compiler.BOARD + '.' + compiler.TARGET_EXT
+TARGET = compiler.BUILD_ROOT + '/' + compiler.BOARD + '.' + compiler.TARGET_EXT
 ic(TARGET)
 
 env = Environment(tools=['mingw'],
@@ -16,13 +18,19 @@ env = Environment(tools=['mingw'],
                   CXX=compiler.CXX, CXXFLAGS=compiler.CXXFLAGS,
                   LINK=compiler.LINK, LINKFLAGS=compiler.LFLAGS)
 
-#print(env.Dump())
+ic(env['CCCOM'])
+ic(env['TOOLS'])
+# print(env.Dump())
+
+env.PrependENVPath('PATH', os.getenv('PATH'))
+
+objs = SConscript('SConscript', variant_dir=compiler.BUILD_ROOT + '/objs', duplicate=0)
+# objs.extend(SConscript('Core/SConscript', variant_dir=compiler.BUILD_ROOT + '/objs', duplicate=0))
+# objs.extend(SConscript('Drivers/SConscript', variant_dir=compiler.BUILD_ROOT + '/objs', duplicate=0))
 
 #ic(objs)
-#print env.get('CPPPATH', [''])
-#print(env.Dump())
+env.Program(TARGET, objs)
 
-
-# make a building
-env.Program(TARGET, source='bar.c')
-DoBuilding(TARGET, objs)
+# # make a building
+# env.Program(TARGET, source='bar.c')
+# DoBuilding(TARGET, objs)

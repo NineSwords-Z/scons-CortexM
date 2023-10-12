@@ -10,6 +10,7 @@ FPU = 'fpv4-sp-d16'
 FLOAT_ABI = 'hard'
 # build version: debug or release
 BUILD = 'release'
+BUILD_ROOT = 'build'
 
 # toolchains
 PREFIX = 'arm-none-eabi-'
@@ -32,7 +33,7 @@ CFLAGS = MCU + \
     ' -g -Wall -Wstrict-aliasing=0 -Wno-uninitialized -Wno-unused-function -Wno-switch' + DEFINES
 AFLAGS = ' -c' + MCU + ' -x assembler-with-cpp -Wa,-mimplicit-it=thumb '
 LFLAGS = MCU + ' -lm -lgcc -lc' + \
-    ' -nostartfiles -Wl,--gc-sections,--print-memory-usage,-Map=build/' + BOARD + '.map,-cref,-u,Reset_Handler -T link.lds'
+    ' -nostartfiles -Wl,--gc-sections,--print-memory-usage,-Map=build/' + BOARD + '.map,-cref,-u,Reset_Handler -T STM32F407VGTx_FLASH.ld'
 
 CPATH = ''
 LPATH = ''
