@@ -1,5 +1,5 @@
 import os
 
-files = Glob('*.s')
+objs = Glob('*.s')
 
-Return('files')
+Return('objs')

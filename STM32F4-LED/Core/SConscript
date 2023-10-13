@@ -1,0 +1,10 @@
+import os
+
+cwd = os.getcwd()
+
+Import('env')
+
+objs = Glob('Src\*.c')
+env.AppendUnique(CPPPATH = cwd + '\Inc')
+
+Return('objs')

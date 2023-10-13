@@ -7,8 +7,9 @@ from icecream import ic
 
 # project root path
 PRO_ROOT = os.path.normpath(os.getcwd())
+# ic(PRO_ROOT)
 
-TARGET = compiler.BUILD_ROOT + '/' + compiler.BOARD + '.' + compiler.TARGET_EXT
+TARGET = compiler.BUILD_ROOT + '/' + compiler.BOARD + '.elf'
 ic(TARGET)
 
 env = Environment(tools=['mingw'],
@@ -18,18 +19,22 @@ env = Environment(tools=['mingw'],
                   CXX=compiler.CXX, CXXFLAGS=compiler.CXXFLAGS,
                   LINK=compiler.LINK, LINKFLAGS=compiler.LFLAGS)
 
-ic(env['CCCOM'])
-ic(env['TOOLS'])
-# print(env.Dump())
+# ic(env['CCCOM'])
 
 env.PrependENVPath('PATH', os.getenv('PATH'))
 
-objs = SConscript('SConscript', variant_dir=compiler.BUILD_ROOT + '/objs', duplicate=0)
-# objs.extend(SConscript('Core/SConscript', variant_dir=compiler.BUILD_ROOT + '/objs', duplicate=0))
-# objs.extend(SConscript('Drivers/SConscript', variant_dir=compiler.BUILD_ROOT + '/objs', duplicate=0))
+objs = SConscript('SConscript', exports='env', variant_dir=compiler.BUILD_ROOT, duplicate=0)
+objs.extend(SConscript('Core\SConscript', exports='env', variant_dir=compiler.BUILD_ROOT + '\Core', duplicate=0))
+objs.extend(SConscript('Drivers\SConscript', exports='env', variant_dir=compiler.BUILD_ROOT + '\Drivers', duplicate=0))
 
+ic(env['CPPPATH'])
+
+# print(env.Dump())
 #ic(objs)
 env.Program(TARGET, objs)
+env.AddPostAction(TARGET, compiler.POST_ACTION_PRE)
+env.AddPostAction(TARGET, compiler.POST_ACTION_HEX)
+env.AddPostAction(TARGET, compiler.POST_ACTION_BIN)
 
 # # make a building
 # env.Program(TARGET, source='bar.c')

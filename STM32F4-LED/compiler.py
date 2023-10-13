@@ -32,8 +32,11 @@ DEFINES = ' -DUSE_HAL_DRIVER -DSTM32F407xx'
 CFLAGS = MCU + \
     ' -g -Wall -Wstrict-aliasing=0 -Wno-uninitialized -Wno-unused-function -Wno-switch' + DEFINES
 AFLAGS = ' -c' + MCU + ' -x assembler-with-cpp -Wa,-mimplicit-it=thumb '
-LFLAGS = MCU + ' -lm -lgcc -lc' + \
-    ' -nostartfiles -Wl,--gc-sections,--print-memory-usage,-Map=build/' + BOARD + '.map,-cref,-u,Reset_Handler -T STM32F407VGTx_FLASH.ld'
+LFLAGS = MCU + ' -specs=nano.specs -TSTM32F407VGTx_FLASH.ld' + ' -lm -lgcc -lc -lnosys' + \
+    ' -Wl,--gc-sections,--print-memory-usage,-Map=build/' + BOARD + '.map,-cref,-u,Reset_Handler'
+
+# LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
+
 
 CPATH = ''
 LPATH = ''
@@ -48,4 +51,7 @@ CXXFLAGS = CFLAGS
 CFLAGS += ' -std=c99'
 CXXFLAGS += ' -std=c++14'
 
-POST_ACTION = OBJCPY + ' -O binary $TARGET build/' + BOARD + '.bin\n' + SIZE + ' $TARGET \n'
+POST_ACTION_PRE = SIZE + ' $TARGET \n'
+POST_ACTION_HEX = OBJCPY + ' -O ihex $TARGET build/' + BOARD + '.hex\n'
+POST_ACTION_BIN = OBJCPY + ' -O binary $TARGET build/' + BOARD + '.bin\n'
+
