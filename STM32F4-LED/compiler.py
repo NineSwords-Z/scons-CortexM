@@ -1,7 +1,7 @@
 import os
 
 # board options
-BOARD = 'STM32F407G-DISC1'
+BOARD = 'STM32F407'
 
 # toolchains options
 ARCH = 'arm'
@@ -35,12 +35,6 @@ AFLAGS = ' -c' + MCU + ' -x assembler-with-cpp -Wa,-mimplicit-it=thumb '
 LFLAGS = MCU + ' -specs=nano.specs -TSTM32F407VGTx_FLASH.ld' + ' -lm -lgcc -lc -lnosys' + \
     ' -Wl,--gc-sections,--print-memory-usage,-Map=build/' + BOARD + '.map,-cref,-u,Reset_Handler'
 
-# LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
-
-
-CPATH = ''
-LPATH = ''
-
 if BUILD == 'debug':
     CFLAGS += ' -O0 -gdwarf-2'
     AFLAGS += ' -gdwarf-2'
@@ -54,4 +48,3 @@ CXXFLAGS += ' -std=c++14'
 POST_ACTION_PRE = SIZE + ' $TARGET \n'
 POST_ACTION_HEX = OBJCPY + ' -O ihex $TARGET build/' + BOARD + '.hex\n'
 POST_ACTION_BIN = OBJCPY + ' -O binary $TARGET build/' + BOARD + '.bin\n'
-

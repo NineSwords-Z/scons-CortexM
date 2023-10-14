@@ -3,8 +3,6 @@ import os
 import compiler
 from icecream import ic
 
-# print("Shell is", os.environ['SHELL'])
-
 # project root path
 PRO_ROOT = os.path.normpath(os.getcwd())
 # ic(PRO_ROOT)
@@ -30,12 +28,9 @@ objs.extend(SConscript('Drivers\SConscript', exports='env', variant_dir=compiler
 ic(env['CPPPATH'])
 
 # print(env.Dump())
-#ic(objs)
+# ic(objs)
+
 env.Program(TARGET, objs)
 env.AddPostAction(TARGET, compiler.POST_ACTION_PRE)
 env.AddPostAction(TARGET, compiler.POST_ACTION_HEX)
 env.AddPostAction(TARGET, compiler.POST_ACTION_BIN)
-
-# # make a building
-# env.Program(TARGET, source='bar.c')
-# DoBuilding(TARGET, objs)
