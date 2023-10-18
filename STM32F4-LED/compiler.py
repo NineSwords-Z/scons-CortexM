@@ -9,7 +9,7 @@ CPU = 'cortex-m4'
 FPU = 'fpv4-sp-d16'
 FLOAT_ABI = 'hard'
 # build version: debug or release
-BUILD = 'release'
+BUILD = 'debug'
 BUILD_ROOT = 'build'
 
 # toolchains
