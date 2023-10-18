@@ -1,3 +1,4 @@
 __pycache__
 build
 .sconsign.dblite
+/STM32F4-LED/.vscode/settings.json

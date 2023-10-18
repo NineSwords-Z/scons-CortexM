@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "stdint.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -54,7 +54,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+static int16_t count = 0;
 /* USER CODE END 0 */
 
 /**
@@ -97,6 +97,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     HAL_Delay(1000);
+    count++;
     HAL_GPIO_TogglePin(LED3_GPIO_Port, LED3_Pin);
     HAL_GPIO_TogglePin(LED4_GPIO_Port, LED4_Pin);
     HAL_GPIO_TogglePin(LED5_GPIO_Port, LED5_Pin);
