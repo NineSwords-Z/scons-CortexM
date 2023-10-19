@@ -1,0 +1,13 @@
+import os
+
+cwd = os.getcwd()
+
+Import('env')
+env.Append(CPPPATH=[cwd + '\STM32H7xx_HAL_Driver\Inc', cwd + '\STM32H7xx_HAL_Driver\Inc\Legacy', cwd + '\CMSIS\Include', cwd + '\CMSIS\Device\ST\STM32H7xx\Include'])
+# env.AppendUnique(CPPPATH = '')
+# env.AppendUnique(CPPPATH = '')
+# env.AppendUnique(CPPPATH = '')
+
+objs = Glob('STM32H7xx_HAL_Driver\Src\*.c')
+
+Return('objs')
