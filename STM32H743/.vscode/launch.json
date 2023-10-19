@@ -7,6 +7,23 @@
         {
             "cwd": "${workspaceRoot}",
             "executable": "./build/STM32H743.elf",
+            "name": "J-Link",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "jlink",
+            "device": "STM32H743VI",
+            "searchDir": [],
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 10
+            },
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "svdFile": "./STM32H743x.svd"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "executable": "./build/STM32H743.elf",
             "name": "OpenOCD with ST-Link",
             "request": "launch",
             "type": "cortex-debug",
