@@ -5,6 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "cwd": "${workspaceFolder}",
+            "executable": "./build/STM32H743.elf",
+            "name": "ST-Link",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "servertype": "stlink",
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 10
+            },
+            "svdFile": "./STM32H743x.svd",
+            "preLaunchTask": "Build"
+        },
+        {
             "cwd": "${workspaceRoot}",
             "executable": "./build/STM32H743.elf",
             "name": "J-Link",
@@ -19,7 +35,8 @@
             },
             "runToEntryPoint": "main",
             "showDevDebugOutput": "none",
-            "svdFile": "./STM32H743x.svd"
+            "svdFile": "./STM32H743x.svd",
+            "preLaunchTask": "Build"
         },
         {
             "cwd": "${workspaceRoot}",
@@ -39,7 +56,8 @@
             },
             "runToEntryPoint": "main",
             "showDevDebugOutput": "none",
-            "svdFile": "./STM32H743x.svd"
+            "svdFile": "./STM32H743x.svd",
+            "preLaunchTask": "Build"
         },
     ]
 }

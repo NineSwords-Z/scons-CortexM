@@ -8,7 +8,7 @@ PRO_ROOT = os.path.normpath(os.getcwd())
 # ic(PRO_ROOT)
 
 TARGET = compiler.BUILD_ROOT + '/' + compiler.BOARD + '.elf'
-ic(TARGET)
+# ic(TARGET)
 
 env = Environment(tools=['mingw'],
                   AS=compiler.AS, ASFLAGS=compiler.AFLAGS,
@@ -25,7 +25,7 @@ objs = SConscript('SConscript', exports='env', variant_dir=compiler.BUILD_ROOT, 
 objs.extend(SConscript('Core\SConscript', exports='env', variant_dir=compiler.BUILD_ROOT + '\Core', duplicate=0))
 objs.extend(SConscript('Drivers\SConscript', exports='env', variant_dir=compiler.BUILD_ROOT + '\Drivers', duplicate=0))
 
-ic(env['CPPPATH'])
+# ic(env['CPPPATH'])
 
 # print(env.Dump())
 # ic(objs)
