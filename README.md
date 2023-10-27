@@ -9,3 +9,5 @@ List of templates:
 STM32F407   ------   STM32 stm32f407vgt6 chip template project.
 
 STM32H743   ------   STM32 stm32h743vit6 chip template project.
+
+MIMXRT1064 ------   NXP i.MX RT1064 chip template project.
