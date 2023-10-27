@@ -1,0 +1,3 @@
+D:/WorkSpace/NXP/MIMXRT1064/CMakeFiles/MIMXRT1064.elf.dir
+D:/WorkSpace/NXP/MIMXRT1064/CMakeFiles/edit_cache.dir
+D:/WorkSpace/NXP/MIMXRT1064/CMakeFiles/rebuild_cache.dir

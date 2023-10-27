@@ -5,3 +5,5 @@ build
 /STM32F407/.vscode/c_cpp_properties.json
 /STM32H743/.vscode/c_cpp_properties.json
 /STM32H743/.vscode/settings.json
+debug
+evkmimxrt1064

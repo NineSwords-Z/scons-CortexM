@@ -1,0 +1,29 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "cwd": "${workspaceRoot}",
+            "executable": "./build/MIMXRT1064.elf",
+            "name": "J-Link",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "jlink",
+            "device": "iMXRT",
+            "searchDir": [],
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 10
+            },
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "interface": "swd",
+            "jlinkscript": "./evkmimxrt1064_sdram_init.jlinkscript",
+            "svdFile": "./MIMXRT1064.svd",
+            // "showDevDebugTimestamps": true,
+            "preLaunchTask": "Build"
+        },
+    ]
+}

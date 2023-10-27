@@ -1,0 +1,19 @@
+import os
+from icecream import ic
+
+Import('env')
+env.Append(CPPPATH=['./board', './CMSIS', './device', './drivers', './utilities', './xip', './component/lists', './component/serial_manager', './component/uart'])
+
+objs = Glob('board\*.c')
+objs += Glob(r'component\lists\*.c')
+objs += Glob(r'component\serial_manager\*.c')
+objs += Glob(r'component\uart\*.c')
+objs += Glob('device\*.c')
+objs += Glob('drivers\*.c')
+objs += Glob('source\*.c')
+objs += Glob('startup\*.S')
+objs += Glob('utilities\*.c')
+objs += Glob('utilities\*.S')
+objs += Glob('xip\*.c')
+
+Return('objs')
