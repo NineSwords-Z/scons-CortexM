@@ -27,6 +27,7 @@
 volatile uint32_t g_systickCounter;
 /* The PIN status */
 volatile bool g_pinSet = false;
+static int count = 0;
 
 /*******************************************************************************
  * Code
@@ -70,7 +71,8 @@ int main(void)
     while (1)
     {
         /* Delay 1000 ms */
-        SysTick_DelayTicks(1000U);
+        SysTick_DelayTicks(100U);
+        count++;
         if (g_pinSet)
         {
             GPIO_PinWrite(EXAMPLE_LED_GPIO, EXAMPLE_LED_GPIO_PIN, 0U);

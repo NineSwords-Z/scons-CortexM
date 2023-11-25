@@ -27,7 +27,7 @@ OBJCPY = PREFIX + 'objcopy'
 MCU = ' -mcpu=' + CPU + \
     ' -mthumb -mfpu=' + FPU + ' -mfloat-abi=' + FLOAT_ABI +' -ffunction-sections -fdata-sections'
 
-CDEFINES = ' -DDEBUG -DCPU_MIMXRT1064DVL6A -DMCUXPRESSO_SDK -DSERIAL_PORT_TYPE_UART=1 -DSDK_DEBUGCONSOLE=1'
+CDEFINES = ' -DDEBUG -DCPU_MIMXRT1064DVL6A -DMCUXPRESSO_SDK -DSERIAL_PORT_TYPE_UART=1 -DSDK_DEBUGCONSOLE=1 -DXIP_EXTERNAL_FLASH=1 -DXIP_BOOT_HEADER_ENABLE=1'
 ADEFINES = ' -DDEBUG -D__STARTUP_CLEAR_BSS -D__STARTUP_INITIALIZE_NONCACHEDATA'
 
 CFLAGS = ' -c' + MCU + CDEFINES +\
@@ -36,7 +36,7 @@ CFLAGS = ' -c' + MCU + CDEFINES +\
 AFLAGS = ' -c' + MCU + ADEFINES +\
     ' -x assembler-with-cpp'
 
-LFLAGS = MCU + ' --specs=nano.specs -TMIMXRT1064xxxxx_ram.ld ' + \
+LFLAGS = MCU + ' --specs=nano.specs -TMIMXRT1064xxxxx_flexspi_nor.ld ' + \
     ' -lgcc -lc -lm -lnosys' + \
     ' -Wl,--print-memory-usage,--start-group,--end-group,-Map=build/' + BOARD + '.map,-cref,-u,Reset_Handler' + \
     ' -Xlinker --gc-sections -Xlinker -static -Xlinker -z -Xlinker muldefs'

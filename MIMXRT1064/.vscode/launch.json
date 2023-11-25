@@ -11,17 +11,17 @@
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "jlink",
-            "device": "iMXRT",
+            "device": "MIMXRT1064xxx6A",
             "searchDir": [],
             "liveWatch": {
                 "enabled": true,
                 "samplesPerSecond": 10
             },
             "runToEntryPoint": "main",
-            "showDevDebugOutput": "none",
+            "showDevDebugOutput": "none",//raw
             "interface": "swd",
-            "jlinkscript": "./evkmimxrt1064_sdram_init.jlinkscript",
             "svdFile": "./MIMXRT1064.svd",
+            // "serverArgs": ["-SettingsFile", "D:\WorkSpace\NXP\vscode_evkmimxrt1064_iled_blinky\armgcc\flexspi_nor_debug\JLink_iled_blinky.jlink"],
             // "showDevDebugTimestamps": true,
             "preLaunchTask": "Build"
         },
