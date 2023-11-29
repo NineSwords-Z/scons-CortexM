@@ -1,0 +1,43 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "cwd": "${workspaceFolder}",
+            "executable": "./build/STM32H750.elf",
+            "name": "ST-Link",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "servertype": "stlink",
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 10
+            },
+            // "serverArgs": ["-el", "STM32H7xx_W25Q128_WeActStudio.stldr"],
+            "svdFile": "./STM32H750x.svd",
+            "preLaunchTask": "Build"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "executable": "./build/STM32H750.elf",
+            "name": "J-Link",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "jlink",
+            "device": "STM32H750VB",
+            "searchDir": [],
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 10
+            },
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "svdFile": "./STM32H750x.svd",
+            "preLaunchTask": "Build"
+        },
+    ]
+}
